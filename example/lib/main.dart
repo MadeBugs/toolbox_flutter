@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:example/userdefaults_demo.dart';
 import 'package:flutter/material.dart';
 import 'package:toolbox/toolbox.dart';
 
@@ -66,19 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    NotificationCenter.addObserver(
-        observer: this,
-        name: "test",
-        block: (value) {
-          print(value);
-        });
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    NotificationCenter.removeObserver(this);
   }
 
   @override
@@ -91,26 +85,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
             TextButton(
                 onPressed: () {
-                  NotificationCenter.removeObserver(this);
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                    return UserdefaultsDemoPage();
+                  }));
                 },
-                child: Text("remove observer")),
+                child: Text("Userdefaults Page")),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
