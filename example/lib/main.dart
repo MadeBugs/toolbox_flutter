@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:example/userdefaults_demo.dart';
+import 'package:example/version_compare.dart';
 import 'package:flutter/material.dart';
 import 'package:toolbox/toolbox.dart';
 
@@ -92,6 +93,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   }));
                 },
                 child: Text("Userdefaults Page")),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                    return ToolsTestPage();
+                  }));
+                },
+                child: Text("VersionCompare Page")),
           ],
         ),
       ),
